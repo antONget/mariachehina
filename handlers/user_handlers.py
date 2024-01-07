@@ -28,15 +28,15 @@ async def process_start_command(message: Message) -> None:
     append_name_start(message.chat.id)
     user_dict[message.chat.id] = ''
     await message.answer(text=MESSAGE_TEXT['text1'])
-    time.sleep(30)
+    time.sleep(20)
     await message.answer(text=MESSAGE_TEXT['text2'])
-    time.sleep(30)
+    time.sleep(20)
     await message.answer(text=MESSAGE_TEXT['text3'])
-    time.sleep(30)
+    time.sleep(20)
     await message.answer(text=MESSAGE_TEXT['text4'])
-    time.sleep(30)
+    time.sleep(20)
     await message.answer(text=MESSAGE_TEXT['text5'])
-    time.sleep(30)
+    time.sleep(20)
     keyboard = keyboard_1()
     await message.answer(text=MESSAGE_TEXT['text6'], reply_markup=keyboard)
 
@@ -58,7 +58,7 @@ async def process_start_command(message: Message, bot: Bot,  state: FSMContext) 
     time.sleep(10)
     await message.answer(text=MESSAGE_TEXT['text9'])
     keyboard = keyboard_1()
-    await message.answer(text=MESSAGE_TEXT['text6'], reply_markup=keyboard)
+    await message.answer(text=MESSAGE_TEXT['text13'], reply_markup=keyboard)
     await state.set_state(default_state)
 
 
@@ -83,11 +83,11 @@ async def process_dialog_calendar(callback_query: CallbackQuery, callback_data: 
         await callback_query.message.answer(text=f'Вы указали: {date.strftime("%d/%m/%Y")}, Ваш код богатства {code}')
         time.sleep(5)
         await callback_query.message.answer(text=MESSAGE_TEXT['text8'])
-        time.sleep(10)
+        time.sleep(20)
         await callback_query.message.answer(text=MESSAGE_TEXT['text9'])
         time.sleep(5)
         keyboard = keyboard_1()
-        await callback_query.message.answer(text=MESSAGE_TEXT['text6'], reply_markup=keyboard)
+        await callback_query.message.answer(text=MESSAGE_TEXT['text13'], reply_markup=keyboard)
 
 
 # нажата кнопка "Аффирмация"
