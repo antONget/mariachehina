@@ -71,7 +71,7 @@ async def process_start_command(message: Message) -> None:
 @router.callback_query(F.data == 'cod')
 async def process_buttons_press(callback: CallbackQuery):
     await callback.message.answer(text=MESSAGE_TEXT['text7'],
-                                  reply_markup=await DialogCalendar(locale='uk_UA').start_calendar(1989))
+                                  reply_markup=await DialogCalendar().start_calendar(1989))
 
 
 # календарь
