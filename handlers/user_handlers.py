@@ -58,7 +58,7 @@ async def process_start_command(message: Message, bot: Bot,  state: FSMContext) 
     time.sleep(10)
     await message.answer(text=MESSAGE_TEXT['text9'])
     keyboard = keyboard_1()
-    await message.answer(text=MESSAGE_TEXT['text13'], reply_markup=keyboard)
+    await message.answer(text=MESSAGE_TEXT['text13'], reply_markup=keyboard, parse_mode='HTML', disable_web_page_preview=True)
     await state.set_state(default_state)
 
 
@@ -87,7 +87,7 @@ async def process_dialog_calendar(callback_query: CallbackQuery, callback_data: 
         await callback_query.message.answer(text=MESSAGE_TEXT['text9'])
         time.sleep(5)
         keyboard = keyboard_1()
-        await callback_query.message.answer(text=MESSAGE_TEXT['text13'], reply_markup=keyboard)
+        await callback_query.message.answer(text=MESSAGE_TEXT['text13'], reply_markup=keyboard, parse_mode='HTML', disable_web_page_preview=True)
 
 
 # нажата кнопка "Аффирмация"
