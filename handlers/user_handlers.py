@@ -77,9 +77,7 @@ async def process_buttons_press(callback: CallbackQuery):
 # календарь
 @router.callback_query(DialogCalendarCallback.filter())
 async def process_dialog_calendar(callback_query: CallbackQuery, callback_data: CallbackData):
-    selected, date = await DialogCalendar(
-        locale=await get_user_locale(callback_query.from_user)
-    ).process_selection(callback_query, callback_data)
+    selected, date = await DialogCalendar().process_selection(callback_query, callback_data)
     if selected:
         code = codewealth(str(date.strftime("%Y-%m-%d")))
         await callback_query.message.answer(text=f'Вы указали: {date.strftime("%d/%m/%Y")}, Ваш код богатства {code}')
