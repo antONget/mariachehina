@@ -1,6 +1,6 @@
 from aiogram import Router, F, Bot
 from aiogram.filters import Command, CommandStart, StateFilter
-from aiogram.types import Message, CallbackQuery, FSInputFile
+from aiogram.types import Message, CallbackQuery, FSInputFile, InputMediaVideo
 from lexicon.lexicon_ru import MESSAGE_TEXT, MESSAGE_COMMANDS
 from services.googleSheets import append_name_start
 from services.main import codewealth, affirmacia
@@ -27,16 +27,22 @@ class Form(StatesGroup):
 async def process_start_command(message: Message) -> None:
     append_name_start(message.chat.id)
     user_dict[message.chat.id] = ''
-    await message.answer(text=MESSAGE_TEXT['text1'])
-    time.sleep(20)
-    await message.answer(text=MESSAGE_TEXT['text2'])
-    time.sleep(20)
-    await message.answer(text=MESSAGE_TEXT['text3'])
-    time.sleep(20)
-    await message.answer(text=MESSAGE_TEXT['text4'])
-    time.sleep(20)
-    await message.answer(text=MESSAGE_TEXT['text5'])
-    time.sleep(20)
+    if message.from_user.first_name is not None:
+        name = message.from_user.first_name
+    else:
+        name = 'друг'
+    await message.answer(text=f'Привет {name}! {MESSAGE_TEXT["text0"]}')
+    video = FSInputFile(r'resources/video.MOV')
+    await message.answer_video(video=video)
+    # time.sleep(20)
+    # await message.answer(text=MESSAGE_TEXT['text2'])
+    # time.sleep(20)
+    # await message.answer(text=MESSAGE_TEXT['text3'])
+    # time.sleep(20)
+    # await message.answer(text=MESSAGE_TEXT['text4'])
+    # time.sleep(20)
+    # await message.answer(text=MESSAGE_TEXT['text5'])
+    # time.sleep(20)
     keyboard = keyboard_1()
     await message.answer(text=MESSAGE_TEXT['text6'], reply_markup=keyboard)
 
