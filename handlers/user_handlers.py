@@ -32,8 +32,8 @@ async def process_start_command(message: Message) -> None:
     else:
         name = 'друг'
     await message.answer(text=f'Привет {name}! {MESSAGE_TEXT["text0"]}')
-    video = FSInputFile(r'resources/video.MOV')
-    await message.answer_video(video=video)
+    file_id='BAACAgIAAxkBAAIJfmXCWeOP8JI0iwxvRLdSawpd77ZzAAKiOwACwrwYSudQ-fpH92fLNAQ'
+    await message.answer_video(video=file_id)
     # time.sleep(20)
     # await message.answer(text=MESSAGE_TEXT['text2'])
     # time.sleep(20)
